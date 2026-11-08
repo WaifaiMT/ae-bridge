@@ -1,0 +1,42 @@
+[project]
+name = "ae-bridge"
+version = "0.1.0"
+description = "Minimal MCP bridge to Adobe After Effects via AfterFX.exe -r and a result file."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Gilbert Addai Gyan" }]
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.2,<2"]
+keywords = ["mcp", "after-effects", "extendscript", "claude", "automation"]
+classifiers = [
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video",
+]
+
+[project.scripts]
+ae-bridge = "ae_bridge.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ae_bridge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+# Correctness and modern-syntax rules. Not the style-only ones: `dict(...)` argument packs read better
+# next to ExtendScript, and `ae_running()` deliberately swallows any error ("can't tell, let the call try").
+select = ["E", "F", "W", "I", "B", "UP"]
+# Long lines are the embedded ExtendScript strings in server.py.
+ignore = ["E501"]
