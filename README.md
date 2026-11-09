@@ -5,6 +5,10 @@
 
 A minimal [MCP](https://modelcontextprotocol.io) server that lets an AI agent (Claude Code, Claude Desktop, or any MCP client) drive a running Adobe After Effects: build comps, add layers and effects, set keyframes and expressions, convert Illustrator logos to shapes, and render. There is no plugin or panel to install inside AE.
 
+![Claude Code animating a logo in After Effects through ae-bridge](docs/demo.gif)
+
+*Claude Code building a logo intro in a running After Effects. The working part is sped up 10x; the finished animation plays at real speed.*
+
 **Windows only.** It uses `AfterFX.exe -r` and the default `C:\Program Files\Adobe\...` install location. You need your own licensed copy of After Effects.
 
 > Not affiliated with or endorsed by Adobe. After Effects and ExtendScript are trademarks of Adobe Inc.
